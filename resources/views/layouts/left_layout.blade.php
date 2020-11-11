@@ -67,10 +67,12 @@
                                     </ul>
                                 </li>
                                 
-                                <li>
-                                    <a href="tables-regular.html" aria-expanded="false">
-                                        <i class="metismenu-icon pe-7s-display2"></i>
-                                        Tables
+                                <li class="app-sidebar__heading">Outline</li>
+                                <li class="">
+                                    <a href="/outline" aria-expanded="false">
+                                        <i class="metismenu-icon pe-7s-diamond"></i>
+                                        Outline
+                                        <i class="metismenu-state-icon caret-left"></i>
                                     </a>
                                 </li>
                                 <li class="app-sidebar__heading">PRO Version</li>

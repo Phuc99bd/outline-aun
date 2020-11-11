@@ -9,24 +9,31 @@ use App\Http\Controllers\Controller;
 use Validator;
 use Illuminate\Support\Facades\Log;
 
-class SubjectApiController extends Controller
+class SettingApiController extends Controller
 {
 
     public function detail(Request $request){
-        $id =  $request -> input("id");
+        try {
+            $id =  $request -> input("id");
 
-        $setting = Setting::where("id",$id)->first();
+            $setting = Setting::where("id",$id)->first();
 
-        if(!$setting){
-            return response([ "message" => "Setting Not found."], 404);
+            if(!$setting){
+                return response([ "message" => "Setting Not found."], 404);
+            }
+            return response([ "data" => $setting]);
+            //code...
+        } catch (Exeception $th) {
+            //throw $th;
+            Log::info($th);
         }
-        return response([ "data" => $setting]);
+        
     }
 
     public function update(Request $request){
         try {
             //code...
-            $validator = Validator::make($request->all(),['status' => 'required', 'id' => 'required']);
+            $validator = Validator::make($request->all(),['id' => 'required']);
 
             if ($validator->fails()) {
             // Do something
@@ -40,14 +47,14 @@ class SubjectApiController extends Controller
                 return response(["error"=> ["title" => ["The title has already been taken"]]],404);
             }
 
-            Setting::where("id",$data["id"])->update(["title" => $data["title"] , "value"=> $data["value"] , "descriptition"=> $data["description"] , "rule" => $data["rule"]]);
+            Setting::where("id",$data["id"])->update(["title" => $data["title"] , "value"=> $data["value"] , "description"=> $data["description"] , "rule" => "admin"]);
 
             $setting = Setting::find($data["id"]);
 
             return response($setting);
         } catch (\Throwable $th) {
             //throw $th;
-            return response($th,500);
+            Log::info($th);
         }
 
        

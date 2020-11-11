@@ -2,10 +2,14 @@
 function createSubject(){
     $(".btn-subject-create").on('click',function(){
         let subject = $(".input-subject").val();
+        let title_en = $(".input-subject-en").val();
         let status = $(".input-subject-status").val();
+        let code = $(".input-code-subject").val();
         let item = {
             title: subject,
-            status
+            title_en,
+            status,
+            subject_code: code
         }
         $.ajax({
             url: "/api/v1/subject/create",
@@ -14,11 +18,19 @@ function createSubject(){
             contentType: "application/json",
             success: function ({ data }) {
                 $(".input-subject").val("");
+                $(".input-subject-en").val("");
+                $(".input-code-subject").val("");
                 let status = data.status == 0 ? "INACTIVE" : data.status == 2 ? "PENDING" : "ACTIVE";
                 let newData = `<tr data-id="${data.id}">
                 <td class="text-center text-muted">#${data.id}</td>
                 <td>
                     ${data.title}
+                </td>
+                <td>
+                    ${data.subject_code}
+                </td>
+                <td>
+                    ${data.title_en}
                 </td>
                 <td class="text-center">
                     <div class="badge badge-warning">
@@ -74,6 +86,8 @@ function editSubject(){
                 }
                 titleCurrent = data.title;
                 $(".input-subject-edit-status").html("");
+                $(".input-edit-code-subject").val(data.subject_code || "");
+                $(".input-edit-subject-en").val(data.title_en || "");
                 for(let i in obj){
                     let checked = i == data.status ? "selected" : "";
                     $(".input-subject-edit-status").append(`<option value=${i} ${checked}> ${obj[i]} </option>`);
@@ -85,17 +99,20 @@ function editSubject(){
     $(".btn-subject-update").on("click",function(){
         let id = $(this).attr("data-id");
         let title = $(".input-edit-subject").val();
+        let title_en = $(".input-edit-subject-en").val();
         let status = +$(".input-subject-edit-status").val();
-
+        let code=  $(".input-edit-code-subject").val();
         $.ajax({
             url: "/api/v1/subject/update",
             type: "PUT",
-            data:  title ? { id , status , title } : { id , status },
+            data: { id , status , title , subject_code: code , title_en  },
             success: (data)=>{
                 let statusNew = data.status == 1 ? "ACTIVE" : data.status == 2 ? "PENDING" : "INACTIVE";
 
                 $(`.subject-body tr[data-id=${data.id}]`).find("td:nth-child(2)").html(data.title);
-                $(`tr[data-id=${data.id}]`).find("td:nth-child(3)").html(` <div class="badge badge-warning">${statusNew} </div>`);
+                $(`.subject-body tr[data-id=${data.id}]`).find("td:nth-child(3)").html(data.title_en);
+                $(`.subject-body tr[data-id=${data.id}]`).find("td:nth-child(4)").html(data.subject_code);
+                $(`tr[data-id=${data.id}]`).find("td:nth-child(5)").html(` <div class="badge badge-warning">${statusNew} </div>`);
                 $(".btn-out-modal").click();
 
                 Swal.fire(

@@ -35,10 +35,12 @@
     </div>
 
     @include('admin.subjects.create')
+    @include('admin.outlines.create')
     @include('admin.subjects.edit')
     @include('admin.elos.create')
     @include('admin.elos.edit')
+    @include('admin.settings.edit')
     
-
+<script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
 <script type="text/javascript" src="{{ asset('admin/main.js') }}"></script></body>
 </html>

@@ -10,8 +10,20 @@
             <div class="modal-body">
                 <div class="col-md-12 mb-3">
                 <div class="form-group"> 
-                        <h5 for="validationCustom01">Tiêu đề</h5>
+                        <h5 for="validationCustom01">Tên tiếng việt</h5>
                                             <input type="text" class="form-control input-subject" id="validationCustom01" placeholder="Title" value="" required="" autofocus>
+                                         
+
+                </div>
+                <div class="form-group"> 
+                        <h5 for="validationCustom01">Tên tiếng anh</h5>
+                                            <input type="text" class="form-control input-subject-en" id="validationCustom01" placeholder="Title" value="" required="" autofocus>
+                                         
+
+                </div>
+                <div class="form-group"> 
+                        <h5 for="validationCustom01">Mã môn học</h5>
+                                            <input type="text" class="form-control input-code-subject" id="validationCustom01" placeholder="Title" value="" required="" autofocus>
                                          
 
                 </div>

@@ -32,8 +32,8 @@ function createElo(){
                 'success'
               )
               $(".btn-out-modal").click();
-              editelo();
-              deleteelo();
+              editElo();
+              deleteElo();
             },
             error: ({ responseJSON })=>{
                 let msg = "";

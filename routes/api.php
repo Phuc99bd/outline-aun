@@ -21,6 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(["prefix"=>"v1/subject"],function(){
     Route::get('/detail', 'Api\SubjectApiController@detail');
+    Route::get('/list', 'Api\SubjectApiController@list');
     Route::delete('/delete', 'Api\SubjectApiController@delete');
     Route::post('/create', 'Api\SubjectApiController@create');
     Route::put('/update', 'Api\SubjectApiController@update');
@@ -36,4 +37,9 @@ Route::group(["prefix"=>"v1/elo"],function(){
 Route::group(["prefix"=>"v1/setting"],function(){
     Route::get('/detail', 'Api\SettingApiController@detail');
     Route::put('/update', 'Api\SettingApiController@update');
+});
+
+Route::group(["prefix"=>"v1/outline"],function(){
+    Route::post('/create', 'Api\OutlineApiController@create');
+    Route::delete('/delete', 'Api\OutlineApiController@delete');
 });

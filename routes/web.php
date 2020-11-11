@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect("/dashboard");
 });
 
 Auth::routes();
@@ -24,6 +24,8 @@ Route::get('/dashboard', 'HomeController@index')->name('home');
 
 
 Route::get('/subject', 'SubjectController@index');
+Route::get('/outline', 'OutlineController@index');
+Route::get('/preview', 'OutlineController@preview');
 Route::get('/elo', 'EloController@index');
 Route::get('/setting', 'SettingController@index');
 

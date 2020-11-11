@@ -23,7 +23,9 @@
                                             <thead>
                                             <tr>
                                                 <th class="text-center">#</th>
-                                                <th>Tên môn học</th>
+                                                <th>Tên môn học - VI</th>
+                                                <th>Tên môn học - EN</th>
+                                                <th>Mã môn học</th>
                                                 <th class="text-center">Status</th>
                                                 <th class="text-center">Actions</th>
                                             </tr>
@@ -34,6 +36,12 @@
                                                 <td class="text-center text-muted">#{{ $subject->id }}</td>
                                                 <td>
                                                     {{ $subject->title }}
+                                                </td>
+                                                <td>
+                                                    {{ $subject->title_en }}
+                                                </td>
+                                                <td>
+                                                    {{ $subject->subject_code }}
                                                 </td>
                                                 <td class="text-center">
                                                     <div class="badge badge-warning">@if($subject->status == 0)

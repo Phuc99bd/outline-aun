@@ -50,21 +50,27 @@
                                         {{ ($outline->is_practice == 0) ? "Lý thuyết" : "Thực hành"}}
                                     </td>
                                     <td class="text-center">
-                                        <button type="button" data-toggle="modal" data-target="#bd-outline-update"
-                                            class="btn btn-primary btn-sm btn-outline-detail"
-                                            data-id={{ $outline-> id }}>detail</button>
+                 
+                                            <a
+                                            class="btn btn-primary btn-sm btn-outline-export"
+                                           href="/outline/detail?id={{ $outline->id }}">Detail</a>
+                                           <button
+                                            class="mr-2 btn-icon btn-icon-only btn btn-outline-danger btn-outline-detail" data-toggle="modal"
+                                             data-target="#bd-outline-edit"
+                                            data-id={{ $outline-> id }}>Edit</button>
                                         <button
                                             class="mr-2 btn-icon btn-icon-only btn btn-outline-danger btn-outline-delete"
                                             data-id={{ $outline-> id }}><i class="pe-7s-trash btn-icon-wrapper">
                                             </i></button>
                                     </td>
                                     <td class="text-center">
-                                        <button type="button" data-toggle="modal" data-target="#bd-outline-update"
-                                            class="btn btn-primary btn-sm btn-outline-export"
-                                            data-id={{ $outline-> id }}>Export Word</button>
+                                            <a
+                                            class="btn btn-primary btn-sm btn-outline-preview"
+                                           href="/outline/exportPdf?id={{ $outline->id }}">Export word</a>
                                         <a
-                                            class="btn btn-primary btn-sm btn-outline-export"
+                                            class="btn btn-primary btn-sm btn-outline-preview"
                                            href="/preview?id={{ $outline->id }}">Preview</a>
+                                        
 
                                     </td>
                                     <td class="text-center">

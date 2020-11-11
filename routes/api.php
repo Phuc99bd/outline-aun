@@ -41,5 +41,7 @@ Route::group(["prefix"=>"v1/setting"],function(){
 
 Route::group(["prefix"=>"v1/outline"],function(){
     Route::post('/create', 'Api\OutlineApiController@create');
+    Route::put('/update', 'Api\OutlineApiController@update');
     Route::delete('/delete', 'Api\OutlineApiController@delete');
+    Route::get('/detail', 'Api\OutlineApiController@detail');
 });

@@ -36,6 +36,7 @@
 
     @include('admin.subjects.create')
     @include('admin.outlines.create')
+    @include('admin.outlines.edit')
     @include('admin.subjects.edit')
     @include('admin.elos.create')
     @include('admin.elos.edit')

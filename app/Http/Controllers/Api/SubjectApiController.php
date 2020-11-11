@@ -26,7 +26,7 @@ class SubjectApiController extends Controller
 
     public function list(Request $request){
 
-        $subject = Subject::get();
+        $subject = Subject::where("status",1)->get();
 
         return response([ "data" => $subject]);
     }

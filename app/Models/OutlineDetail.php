@@ -12,4 +12,8 @@ class OutlineDetail extends Model
         'sort',
         'structure_id',
     ];
+
+    public function outlineStructure(){
+        return $this->belongsTo("App\Models\OutlineStructure","structure_id","id");
+    }
 }

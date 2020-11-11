@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Models\Outline;
+use App\Models\Subject;
 use App\Models\OutlineDetail;
 use App\Models\Setting;
 use App\Models\OutlineStructure;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Controller;
 use Validator;
 use Illuminate\Support\Facades\Log;
 use Exception;
+use Dompdf\Dompdf;
 
 class OutlineApiController extends Controller
 {
@@ -92,35 +94,78 @@ class OutlineApiController extends Controller
     public function update(Request $request){
         try {
             //code...
-            $validator = Validator::make($request->all(),['status' => 'required', 'id' => 'required']);
+            $validator = Validator::make($request->all(),['title' => 'required', 'id' => 'required']);
 
             if ($validator->fails()) {
             // Do something
                 return response(["error"=> $validator->errors()],404);
             }
             $data = $request-> all();
-            $fillTitle = Subject::where("title",$data["title"])->where("id","!=",$data["id"])->first();
+            $fillTitle = Outline::where("title",$data["title"])->where("id","!=",$data["id"])->first();
 
             if($fillTitle){
                 return response(["error"=> ["title" => ["The title has already been taken"]]],404);
             }
-            $code = Subject::where("subject_code",$data["subject_code"])->where("id","!=",$data["id"])->first();
 
-            if($code){
-                return response(["error"=> ["code" => ["The code subject has already been taken"]]],404);
-            }
+            Outline::where("id",$data["id"])->update(["subject_id"=> $data["subject_id"] , "title" => $data["title"]]);
 
-            Subject::where("id",$data["id"])->update(["status"=> $data["status"] , "title" => $data["title"] , "subject_code"=> $data["subject_code"]]);
+            $outline = Outline::where("id",$data["id"])->with("subject")->first();
 
-            $subject = Subject::find($data["id"]);
-
-            return response($subject);
+            return response(["data" => $outline ]);
         } catch (\Throwable $th) {
             //throw $th;
             return response($th,500);
         }
+    }
 
-       
+    public function detail(Request $request){
+        try {
+            $id = $request->input("id");
+
+            $outline = Outline::find($id);
+
+            if(!$outline){
+                return response(["error"=> ["outline" => ["Outline not found."]]], 404);
+            }
+            $subjects = Subject::where("status",1)->get();
+
+            return response(["data" => $outline , "subjects"=> $subjects ]);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response($th,500);
+        }
+    }
+
+    public function exportPdf(Request $request){
+        try {
+            $id = $request->input("id");
+            $dompdf = new Dompdf();
+            // Enable the HTML5 parser to tolerate poorly formed HTML
+            $dompdf->set_option('isHtml5ParserEnabled', true);
+
+            $content = "";
+            $outline = Outline::where("id",$id)
+            ->with("subject")
+            ->with("outlineDetails")
+            ->first();
+            if(!$outline){
+                return response(["error"=> ["outline" => ["Outline not found."]]], 404);
+            }
+            foreach($detail as $outline->outlineDetails){
+                $content = $content.$detail;
+            }
+
+            $dompdf->loadHtml($content);
+
+            // Render and download
+            $dompdf->render();
+            $dompdf->stream();
+
+            return response(["data" => $outline]);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response("Bug".$th,500);
+        }
     }
 
 }

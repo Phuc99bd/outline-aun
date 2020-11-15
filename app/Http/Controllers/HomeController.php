@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
+use App\Models\Outline;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -24,7 +26,18 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $countOutline = null;
+        $countVersion = null;
+        $countUser = User::count();
         $user = Auth::user();
-        return view('admin.dashboard',[ "user" => $user]);
+        if($user->role == 1){
+            $countOutline = Outline::count();
+            $countVersion = Outline::count();;
+        }
+        else{
+            $countOutline =  Outline::where("user_id", $user->id)->count();;
+            $countVersion =  Outline::where("user_id", $user->id)->count();;
+        }
+        return view('admin.dashboard',[ "user" => $user , "title" => "Dashboard" , "countUser"=> $countUser , "countOutline"=> $countOutline , "countVersion"=> $countVersion]);
     }
 }

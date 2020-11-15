@@ -15,7 +15,7 @@ class SettingController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('adminAuth');
     }
 
     /**
@@ -30,7 +30,7 @@ class SettingController extends Controller
         $settings = Setting::orderBy("id","desc")->paginate($limit);
         // return response($subjects);
         $user = Auth::user();
-        return view('admin.setting',[ "user" => $user , "settings" => $settings]);
+        return view('admin.setting',[ "user" => $user , "settings" => $settings, "title" => "Setting"]);
     }
 
 }

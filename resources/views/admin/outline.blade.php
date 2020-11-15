@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
-
+@section('title')
+    {{$title}}
+@endsection
 @section('content')
 <script src="{{ asset('api/outline.js') }}"> </script>
 

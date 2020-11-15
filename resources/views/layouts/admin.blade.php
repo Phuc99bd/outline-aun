@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Analytics Dashboard - This is an example dashboard created using build-in elements and components.</title>
+    <title>    @yield('title') </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
@@ -22,9 +22,11 @@
     * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
     -->
 <link href="{{ asset('admin/main.css') }}" rel="stylesheet"></head>
+<link rel="stylesheet" href="{{ asset('admin/froala_editor.pkgd.min.css') }}">
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{ asset('admin/froala_editor.pkgd.min.js') }}"></script>
 
 <body>
 
@@ -41,7 +43,12 @@
     @include('admin.elos.create')
     @include('admin.elos.edit')
     @include('admin.settings.edit')
+    @include('admin.outline_details.edit')
     
 <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
-<script type="text/javascript" src="{{ asset('admin/main.js') }}"></script></body>
+<script type="text/javascript" src="{{ asset('admin/main.js') }}"></script>
+<script>
+    new FroalaEditor('div#froala-editor')
+</script>
+</body>
 </html>

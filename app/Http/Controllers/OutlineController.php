@@ -34,7 +34,7 @@ class OutlineController extends Controller
         ->paginate($limit);
 
         // return response($subjects);
-        return view('admin.outline',[ "user" => $user , "outlines" => $outlines]);
+        return view('admin.outline',[ "user" => $user , "outlines" => $outlines , "title" => "Manager outline"]);
     }
 
     public function preview(Request $request)
@@ -49,7 +49,7 @@ class OutlineController extends Controller
         ->first();
 
         // return response($subjects);
-        return view('admin.preview',[ "user" => $user , "outline" => $outline]);
+        return view('admin.preview',[ "user" => $user , "outline" => $outline , "title" => $outline->title]);
     }
 
     public function exportWord(Request $request)

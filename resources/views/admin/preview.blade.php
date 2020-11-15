@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
-
+@section('title')
+    {{$title}}
+@endsection
 @section('content')
 
 <div class="app-main__outer">

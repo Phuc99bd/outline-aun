@@ -36,7 +36,7 @@ class OutlineDetailController extends Controller
         }
         $outlineDetails = OutlineDetail::where("outline_id",$outline->id)->with("outlineStructure")->get(); 
 
-        return view('admin.outline_detail',[ "user" => $user , "outlineDetails" => $outlineDetails]);
+        return view('admin.outline_detail',[ "user" => $user , "outlineDetails" => $outlineDetails ,  "title" => $outline->title]);
     }
 
 }

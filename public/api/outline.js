@@ -186,7 +186,68 @@ function exportPdf(){
             type: 'post',
             data: { id },
             success: ({data})=>{
-                console.log(data);
+            }
+        })
+    })
+}
+
+function cloneVersion(){
+    $(".btn-outline-version").on("click",function(){
+        let id = $(this).attr("data-id");
+
+        $.ajax({
+            url: `/api/v1/outline/clone-version`,
+            type: 'post',
+            data: { id },
+            success: ({data})=>{
+                const html = `<tr data-id="${data.id}">
+               <td class="text-center text-muted">#${data.id}</td>
+               <td>
+                    ${data.title}
+               </td>
+               <td>
+                   ${data.version}
+               </td>
+               <td>
+                   ${data.subject.title}
+               </td>
+               <td>
+                   ${data.is_practice == 0 ? "Lý thuyết" : "Thực hành"}
+               </td>
+               <td class="text-center">
+                   <button type="button" data-toggle="modal" data-target="#bd-outline-update"
+                       class="btn btn-primary btn-sm btn-outline-detail"
+                       data-id="${data.id}">detail</button>
+                <button
+                                            class="mr-2 btn-icon btn-icon-only btn btn-outline-danger btn-outline-detail" data-toggle="modal"
+                                             data-target="#bd-outline-edit"
+                                            data-id="${data.id}">Edit</button>
+                   <button
+                       class="mr-2 btn-icon btn-icon-only btn btn-outline-danger btn-outline-delete"
+                       data-id="${data.id}"><i class="pe-7s-trash btn-icon-wrapper">
+                       </i></button>
+               </td>
+               <td class="text-center">
+               <a
+               class="btn btn-primary btn-sm btn-outline-preview"
+              href="/outline/exportPdf?id=${data.id}">Export word</a>
+                   <a
+                       class="btn btn-primary btn-sm btn-outline-export"
+                      href="/preview?id=${data.id}">Preview</a>
+
+               </td>
+               <td class="text-center">
+                   <button type="button" data-toggle="modal" data-target="#bd-outline-update"
+                       class="btn btn-primary btn-sm btn-outline-version"
+                       data-id=${data.id}>Clone up version</button>
+
+               </td>
+           </tr>`
+            $(".outline-body").prepend(html);
+            $(".btn-out-modal").click();
+            deleteOutline();
+            editOutline();
+            cloneVersion();
             }
         })
     })
@@ -198,4 +259,5 @@ $(document).ready(function () {
     deleteOutline();
     editOutline();
     exportPdf();
+    cloneVersion();
 })

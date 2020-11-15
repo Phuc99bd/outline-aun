@@ -33,12 +33,15 @@
                             <ul class="vertical-nav-menu metismenu">
                                 <li class="app-sidebar__heading">Tổng quan</li>
                                 <li>
-                                    <a href="index.html" class="mm-active" aria-expanded="false">
+                                    <a href="/dashboard" class="mm-active" aria-expanded="false">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                         Tổng quan
                                     </a>
                                 </li>
                                 <li class="app-sidebar__heading">Chức năng</li>
+                                
+                                @if($user->role == 1)
+
                                 <li class="">
                                     <a href="#" aria-expanded="false">
                                         <i class="metismenu-icon pe-7s-diamond"></i>
@@ -66,6 +69,9 @@
                                         </li>
                                     </ul>
                                 </li>
+                                
+                                @endif
+                                
                                 
                                 <li class="app-sidebar__heading">Outline</li>
                                 <li class="">

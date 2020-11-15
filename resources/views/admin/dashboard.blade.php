@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
-
+@section('title')
+    {{$title}}
+@endsection
 @section('content')
 <div class="app-main__outer">
                     <div class="app-main__inner">
@@ -78,7 +80,7 @@
                                             <div class="widget-subheading">Total outline</div>
                                         </div>
                                         <div class="widget-content-right">
-                                            <div class="widget-numbers text-white"><span>1896</span></div>
+                                            <div class="widget-numbers text-white"><span>{{ $countOutline }}</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -91,7 +93,7 @@
                                             <div class="widget-subheading">quantity</div>
                                         </div>
                                         <div class="widget-content-right">
-                                            <div class="widget-numbers text-white"><span>$ 568</span></div>
+                                            <div class="widget-numbers text-white"><span>{{ $countUser}}</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -104,7 +106,7 @@
                                             <div class="widget-subheading">Total outline version</div>
                                         </div>
                                         <div class="widget-content-right">
-                                            <div class="widget-numbers text-white"><span>46%</span></div>
+                                            <div class="widget-numbers text-white"><span>{{$countVersion}}</span></div>
                                         </div>
                                     </div>
                                 </div>

@@ -15,7 +15,7 @@ class SubjectController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('adminAuth');
     }
 
     /**
@@ -30,7 +30,7 @@ class SubjectController extends Controller
         $subjects = Subject::orderBy("id","desc")->paginate($limit);
         // return response($subjects);
         $user = Auth::user();
-        return view('admin.subject',[ "user" => $user , "subjects" => $subjects]);
+        return view('admin.subject',[ "user" => $user , "subjects" => $subjects , "title" => "Manager subject"]);
     }
 
 }

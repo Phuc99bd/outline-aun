@@ -1,5 +1,8 @@
 @extends('layouts.admin')
 
+@section('title')
+    {{$title}}
+@endsection
 
 @section('content')
 <script src="{{ asset('api/subject.js') }}"> </script>

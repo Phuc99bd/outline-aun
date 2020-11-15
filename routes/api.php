@@ -44,4 +44,10 @@ Route::group(["prefix"=>"v1/outline"],function(){
     Route::put('/update', 'Api\OutlineApiController@update');
     Route::delete('/delete', 'Api\OutlineApiController@delete');
     Route::get('/detail', 'Api\OutlineApiController@detail');
+    Route::post('/clone-version', 'Api\OutlineApiController@cloneUpVersion');
+});
+
+Route::group(["prefix"=>"v1/outline-detail"],function(){
+    Route::get('/detail', 'Api\OutlineDetailApiController@detail');
+    Route::put('/update', 'Api\OutlineDetailApiController@update');
 });

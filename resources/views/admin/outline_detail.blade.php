@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
-
+@section('title')
+    {{$title}}
+@endsection
 @section('content')
 <script src="{{ asset('api/outline_detail.js') }}"> </script>
 
@@ -39,7 +41,8 @@
                                     <td class="text-center">
                                         <button
                                                     class="btn btn-primary btn-sm btn-detail-outlineDetail"
-                                                    data-id={{ $outlineoutlineDetail-> id }}>Detail</button>
+                                                    data-id="{{ $outlineoutlineDetail-> id }}" data-toggle="modal"
+                                             data-target="#bd-outline-detail-edit">Detail</button>
 
                                     </td>
                                 </tr>

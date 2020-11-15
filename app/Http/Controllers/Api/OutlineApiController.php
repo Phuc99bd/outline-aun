@@ -9,6 +9,7 @@ use App\Models\Subject;
 use App\Models\OutlineDetail;
 use App\Models\Setting;
 use App\Models\OutlineStructure;
+use App\Models\Elo;
 use App\Http\Controllers\Controller;
 use Validator;
 use Illuminate\Support\Facades\Log;
@@ -76,9 +77,9 @@ class OutlineApiController extends Controller
             }
 
             $setting = Setting::where("rule","name")->first();
-
+            $elos = Elo::get();
             foreach($structures as $structure){
-                $content = view("admin.sides.$structure->html_raw",["outline"=> $newOutline , "setting"=> $setting]);
+                $content = view("admin.sides.$structure->html_raw",["outline"=> $newOutline , "setting"=> $setting , "elos" => $elos]);
                 OutlineDetail::create(array('outline_id' => $newOutline->id, 'content'=>$content , 'sort'=>$structure->sort , 'structure_id'=> $structure->id));
             }
             
@@ -165,6 +166,28 @@ class OutlineApiController extends Controller
         } catch (\Throwable $th) {
             //throw $th;
             return response("Bug".$th,500);
+        }
+    }
+
+    public function cloneUpVersion(Request $request){
+        try {
+            $id = $request->input("id");
+            
+            $outline = Outline::where("id",$id)->first();
+            $versionNew = $outline->version + 1;
+            $date = time();
+            $newOutline = Outline::create(["title"=> $outline->title."($versionNew)-$date" , "version" => $versionNew , "user_id"=> $outline->user_id , "is_practice"=> $outline->is_practice , "subject_id"=> $outline->subject_id]);
+
+            foreach($outline->outlineDetails as $detail){
+                OutlineDetail::create([ "outline_id"=> $newOutline->id , "content"=> $detail->content , "sort" => $detail->sort , "structure_id" => $detail->structure_id]);
+            }
+
+            $newData = Outline::where("id",$newOutline->id)->with("subject")->first();
+
+            return response(["data" => $newData]);
+        } catch (\Throwable $th) {
+            throw $th;
+            return response($th,500);
         }
     }
 

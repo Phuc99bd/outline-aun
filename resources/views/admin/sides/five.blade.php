@@ -36,7 +36,7 @@
                     style='margin-right:0in;margin-left:0in;font-size:16px;font-family:"Times New Roman",serif;margin:0in;margin-bottom:.0001pt;text-align:center;'>
                     <span style="font-size:15px;color:black;">T&ecirc;n HP</span></p>
             </td>
-            <td colspan="10"
+            <td colspan="{{ count($elos)}}"
                 style="width:87.7%;border:solid windowtext 1.0pt;border-left:none;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
                 width="88.77551020408163%">
                 <p
@@ -46,8 +46,7 @@
         </tr>
         <tr>
             <td rowspan="2"
-                style="width:5.44%;border:solid windowtext 1.0pt;border-top:none;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
-                width="5.376344086021505%">
+                style="border:solid windowtext 1.0pt;border-top:none;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;">
                 <p
                     style='margin-right:0in;margin-left:0in;font-size:16px;font-family:"Times New Roman",serif;margin:0in;margin-bottom:.0001pt;text-align:center;'>
                     <span style="font-size:15px;color:black;">TI098</span></p>
@@ -59,128 +58,25 @@
                     style='margin-right:0in;margin-left:0in;font-size:16px;font-family:"Times New Roman",serif;margin:0in;margin-bottom:.0001pt;text-align:center;'>
                     <span style="font-size:15px;color:black;">PTUDD</span></p>
             </td>
-            <td style="width:6.6%;border-top:none;border-left:none;border-bottom:  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
-                width="6.451612903225806%">
+            @foreach($elos as $elo)
+            <td style="border-top:none;border-left:none;border-bottom:  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
+                >
                 <p
                     style='margin-right:0in;margin-left:0in;font-size:16px;font-family:"Times New Roman",serif;margin:0in;margin-bottom:.0001pt;text-align:center;'>
-                    <span style="font-size:15px;color:black;">ELO1</span></p>
+                    <span style="font-size:15px;color:black;">{{ $elo-> title}}</span></p>
             </td>
-            <td style="width:6.6%;border-top:none;border-left:none;border-bottom:  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
-                width="6.451612903225806%">
-                <p
-                    style='margin-right:0in;margin-left:0in;font-size:16px;font-family:"Times New Roman",serif;margin:0in;margin-bottom:.0001pt;text-align:center;'>
-                    <span style="font-size:15px;color:black;">ELO2</span></p>
-            </td>
-            <td style="width:8.6%;border-top:none;border-left:none;border-bottom:  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
-                width="8.602150537634408%">
-                <p
-                    style='margin-right:0in;margin-left:0in;font-size:16px;font-family:"Times New Roman",serif;margin:0in;margin-bottom:.0001pt;text-align:center;'>
-                    <span style="font-size:15px;color:black;">ELO3</span></p>
-            </td>
-            <td style="width:5.6%;border-top:none;border-left:none;border-bottom:  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
-                width="5.376344086021505%">
-                <p
-                    style='margin-right:0in;margin-left:0in;font-size:16px;font-family:"Times New Roman",serif;margin:0in;margin-bottom:.0001pt;text-align:center;'>
-                    <span style="font-size:15px;color:black;">ELO4</span></p>
-            </td>
-            <td style="width:11.6%;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
-                width="11.827956989247312%">
-                <p
-                    style='margin-right:0in;margin-left:0in;font-size:16px;font-family:"Times New Roman",serif;margin:0in;margin-bottom:.0001pt;text-align:center;'>
-                    <span style="font-size:15px;color:black;">ELO5</span></p>
-            </td>
-            <td style="width:9.62%;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
-                width="9.67741935483871%">
-                <p
-                    style='margin-right:0in;margin-left:0in;font-size:16px;font-family:"Times New Roman",serif;margin:0in;margin-bottom:.0001pt;text-align:center;'>
-                    <span style="font-size:15px;color:black;">ELO6</span></p>
-            </td>
-            <td style="width:9.62%;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
-                width="9.67741935483871%">
-                <p
-                    style='margin-right:0in;margin-left:0in;font-size:16px;font-family:"Times New Roman",serif;margin:0in;margin-bottom:.0001pt;text-align:center;'>
-                    <span style="font-size:15px;color:black;">ELO7</span></p>
-            </td>
-            <td style="width:12.6%;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
-                width="12.903225806451612%">
-                <p
-                    style='margin-right:0in;margin-left:0in;font-size:16px;font-family:"Times New Roman",serif;margin:0in;margin-bottom:.0001pt;text-align:center;'>
-                    <span style="font-size:15px;color:black;">ELO8</span></p>
-            </td>
-            <td style="width:10.6%;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
-                width="10.75268817204301%">
-                <p
-                    style='margin-right:0in;margin-left:0in;font-size:16px;font-family:"Times New Roman",serif;margin:0in;margin-bottom:.0001pt;text-align:center;'>
-                    <span style="font-size:15px;color:black;">ELO9</span></p>
-            </td>
-            <td style="width:6.24%;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
-                width="6.451612903225806%">
-                <p
-                    style='margin-right:0in;margin-left:0in;font-size:16px;font-family:"Times New Roman",serif;margin:0in;margin-bottom:.0001pt;text-align:center;'>
-                    <span style="font-size:15px;color:black;">ELO10</span></p>
-            </td>
+            @endforeach
+           
         </tr>
         <tr>
-            <td style="width:6.6%;border-top:none;border-left:none;border-bottom:  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
-                width="7.317073170731708%">
+        @foreach($elos as $elo)
+            <td style="border-top:none;border-left:none;border-bottom:  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
+                >
                 <p
                     style='margin-right:0in;margin-left:0in;font-size:16px;font-family:"Times New Roman",serif;margin:0in;margin-bottom:.0001pt;text-align:center;'>
-                    <span style="font-size:15px;color:black;">S</span></p>
+                    <span style="font-size:15px;color:black;"> </span></p>
             </td>
-            <td style="width:6.6%;border-top:none;border-left:none;border-bottom:  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
-                width="7.317073170731708%">
-                <p
-                    style='margin-right:0in;margin-left:0in;font-size:16px;font-family:"Times New Roman",serif;margin:0in;margin-bottom:.0001pt;text-align:center;'>
-                    <span style="font-size:15px;color:black;">H</span></p>
-            </td>
-            <td style="width:8.6%;border-top:none;border-left:none;border-bottom:  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
-                width="9.75609756097561%">
-                <p
-                    style='margin-right:0in;margin-left:0in;font-size:16px;font-family:"Times New Roman",serif;margin:0in;margin-bottom:.0001pt;text-align:center;'>
-                    <span style="font-size:15px;color:black;">H</span></p>
-            </td>
-            <td style="width:5.6%;border-top:none;border-left:none;border-bottom:  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
-                width="6.097560975609756%">
-                <p
-                    style='margin-right:0in;margin-left:0in;font-size:16px;font-family:"Times New Roman",serif;margin:0in;margin-bottom:.0001pt;text-align:center;'>
-                    <span style="font-size:15px;color:black;">S</span></p>
-            </td>
-            <td style="width:11.6%;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
-                width="13.414634146341463%">
-                <p
-                    style='margin-right:0in;margin-left:0in;font-size:16px;font-family:"Times New Roman",serif;margin:0in;margin-bottom:.0001pt;text-align:center;'>
-                    <span style="font-size:15px;color:black;">N</span></p>
-            </td>
-            <td style="width:9.62%;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
-                width="10.975609756097562%">
-                <p
-                    style='margin-right:0in;margin-left:0in;font-size:16px;font-family:"Times New Roman",serif;margin:0in;margin-bottom:.0001pt;text-align:center;'>
-                    <span style="font-size:15px;color:black;">H</span></p>
-            </td>
-            <td style="width:9.62%;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
-                width="10.975609756097562%">
-                <p
-                    style='margin-right:0in;margin-left:0in;font-size:16px;font-family:"Times New Roman",serif;margin:0in;margin-bottom:.0001pt;text-align:center;'>
-                    <span style="font-size:15px;color:black;">S</span></p>
-            </td>
-            <td style="width:12.6%;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
-                width="14.634146341463415%">
-                <p
-                    style='margin-right:0in;margin-left:0in;font-size:16px;font-family:"Times New Roman",serif;margin:0in;margin-bottom:.0001pt;text-align:center;'>
-                    <span style="font-size:15px;color:black;">H</span></p>
-            </td>
-            <td style="width:10.6%;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
-                width="12.195121951219512%">
-                <p
-                    style='margin-right:0in;margin-left:0in;font-size:16px;font-family:"Times New Roman",serif;margin:0in;margin-bottom:.0001pt;text-align:center;'>
-                    <span style="font-size:15px;color:black;">N</span></p>
-            </td>
-            <td style="width:6.24%;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;height:15.0pt;"
-                width="7.317073170731708%">
-                <p
-                    style='margin-right:0in;margin-left:0in;font-size:16px;font-family:"Times New Roman",serif;margin:0in;margin-bottom:.0001pt;text-align:center;'>
-                    <span style="font-size:15px;color:black;">S</span></p>
-            </td>
+            @endforeach
         </tr>
     </tbody>
 </table>

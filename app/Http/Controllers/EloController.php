@@ -15,7 +15,7 @@ class EloController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('adminAuth');
     }
 
     /**
@@ -30,7 +30,7 @@ class EloController extends Controller
         $elos = Elo::orderBy("id","desc")->paginate($limit);
         // return response($subjects);
         $user = Auth::user();
-        return view('admin.elo',[ "user" => $user , "elos" => $elos]);
+        return view('admin.elo',[ "user" => $user , "elos" => $elos , "title" => "Manager Elo"]);
     }
 
 }

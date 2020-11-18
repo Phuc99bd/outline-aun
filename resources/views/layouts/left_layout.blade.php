@@ -69,7 +69,14 @@
                                         </li>
                                     </ul>
                                 </li>
-                                
+                                <li class="app-sidebar__heading">Users</li>
+                                <li class="">
+                                    <a href="/users" aria-expanded="false">
+                                        <i class="metismenu-icon pe-7s-diamond"></i>
+                                        Users
+                                        <i class="metismenu-state-icon caret-left"></i>
+                                    </a>
+                                </li>
                                 @endif
                                 
                                 

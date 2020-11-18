@@ -40,4 +40,20 @@ class HomeController extends Controller
         }
         return view('admin.dashboard',[ "user" => $user , "title" => "Dashboard" , "countUser"=> $countUser , "countOutline"=> $countOutline , "countVersion"=> $countVersion]);
     }
+
+    public function userInfo()
+    {
+        $user = Auth::user();
+
+        return view('admin.user_profile', [ "user" => $user , "title" => "User Infomation"]);
+    }
+
+    public function updateInfomation(Request $request){
+        $user = Auth::user();
+
+        $name = $request->input("name");
+
+        User::where("id",  $user->id)->update(["name" => $name]);
+        return $this->userInfo();
+    }
 }

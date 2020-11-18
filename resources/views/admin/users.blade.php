@@ -1,0 +1,61 @@
+@extends('layouts.admin')
+
+@section('title')
+    {{$title}}
+@endsection
+@section('content')
+<script src="{{ asset('api/elo.js') }}"> </script>
+
+<div class="app-main__outer">
+                    <div class="app-main__inner">
+<div class="row">
+                            <div class="col-md-12">
+                                <div class="main-card mb-3 card">
+                                    <div class="card-header"> Manager User
+                                        <div class="btn-actions-pane-right">
+                                            <div role="group" class="btn-group-sm btn-group">
+                                                <!-- <button class="btn btn-focus">All Month                                             
+                                                </button> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th class="text-center">#</th>
+                                                <th>Email </th>
+                                                <th class="text-center">Full name</th>
+                                                <th class="text-center">History</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody class="elo-body">
+                                            @foreach($users as $userDetail)
+                                            <tr data-id={{ $userDetail ->id}}>
+                                                <td class="text-center text-muted">#{{ $userDetail->id }}</td>
+                                                <td>
+                                                    {{ $userDetail->email }}
+                                                </td>
+                                                <td>
+                                                    {{ $userDetail->name }}
+                                                </td>
+                                                <td class="text-center">
+                                                     <button type="button" data-toggle="modal" data-target="#bd-elo-update" class="btn btn-primary btn-sm btn-elo-detail" data-id={{ $userDetail-> id }}>History</button>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                            
+                                           
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="d-block text-center card-footer">
+                                    {{ $users }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                    
+@endsection

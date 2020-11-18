@@ -31,8 +31,11 @@ Route::get('/outline/exportPdf', 'OutlineController@exportWord');
 Route::get('/preview', 'OutlineController@preview');
 Route::get('/elo', 'EloController@index');
 Route::get('/setting', 'SettingController@index');
+Route::get('/users', 'UserController@index');
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/user-info', 'HomeController@userInfo');
+Route::post('/user-info', 'HomeController@updateInfomation')->name("update-info");
 
 Route::any('/admin/pages/{id}/build', 'PageBuilderController@build')->name('pagebuilder.build');
 Route::any('/admin/pages/build', 'PageBuilderController@build');

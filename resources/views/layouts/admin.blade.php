@@ -30,11 +30,15 @@
 
 <body>
 
+    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+    
     @include('layouts.navbar')
     <div class="app-main">
     @include('layouts.left_layout')
     @yield('content')
     </div>
+    </div>
+
 
     @include('admin.subjects.create')
     @include('admin.outlines.create')

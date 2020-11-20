@@ -15,6 +15,7 @@ use Validator;
 use Illuminate\Support\Facades\Log;
 use Exception;
 use Dompdf\Dompdf;
+use App\Models\User;
 
 class OutlineApiController extends Controller
 {
@@ -137,6 +138,19 @@ class OutlineApiController extends Controller
         }
     }
 
+    public function history(Request $request){
+        try {
+            $id = $request->input("id");
+
+            $historyUser = Outline::where("user_id", $id)->with("subject")->limit(10)->orderBy("updated_at","desc")->get();
+
+            return response(["data" => $historyUser  ]);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response($th,500);
+        }
+    }
+
     public function exportPdf(Request $request){
         try {
             $id = $request->input("id");
@@ -163,6 +177,18 @@ class OutlineApiController extends Controller
             $dompdf->stream();
 
             return response(["data" => $outline]);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response("Bug".$th,500);
+        }
+    }
+
+    public function chart(Request $request){
+        try {
+            $date = date('YYYY-MM-DD', strtotime("-30 days"));
+            $outlines = Outline::where("created_at",">",$date)->get();
+            $users = User::where("created_at",">",$date)->get();
+            return response(["data" => ["users"=> $users , "outlines"=> $outlines]]);
         } catch (\Throwable $th) {
             //throw $th;
             return response("Bug".$th,500);

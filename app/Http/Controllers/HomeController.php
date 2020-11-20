@@ -32,13 +32,15 @@ class HomeController extends Controller
         $user = Auth::user();
         if($user->role == 1){
             $countOutline = Outline::count();
-            $countVersion = Outline::count();;
+            $countVersion = Outline::where("version",">", 1)->count();
         }
         else{
             $countOutline =  Outline::where("user_id", $user->id)->count();;
-            $countVersion =  Outline::where("user_id", $user->id)->count();;
+            $countVersion =  Outline::where("user_id", $user->id)->where("version",">", 1)->count();;
         }
-        return view('admin.dashboard',[ "user" => $user , "title" => "Dashboard" , "countUser"=> $countUser , "countOutline"=> $countOutline , "countVersion"=> $countVersion]);
+        $users = User::orderBy("created_at","desc")->where("role", 0)->paginate(5);
+
+        return view('admin.dashboard',[ "user" => $user , "title" => "Dashboard" , "countUser"=> $countUser ,"users"=>$users, "countOutline"=> $countOutline , "countVersion"=> $countVersion]);
     }
 
     public function userInfo()

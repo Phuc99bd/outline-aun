@@ -48,6 +48,7 @@
     @include('admin.elos.edit')
     @include('admin.settings.edit')
     @include('admin.outline_details.edit')
+    @include('admin.users.preview')
     
 <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
 <script type="text/javascript" src="{{ asset('admin/main.js') }}"></script>

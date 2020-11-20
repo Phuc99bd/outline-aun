@@ -1,0 +1,41 @@
+<div class="modal fade " id="bd-user-history" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Danh sách đề cương mói nhất</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <table class="table tbl-history">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Tên đề cương</th>
+                                        <th>Version</th>
+                                        <th>Export</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td scope="row"></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>  
+                    </div>
+                 
+                                            
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-out-modal" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

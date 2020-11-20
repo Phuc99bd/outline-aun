@@ -55,7 +55,7 @@ function createOutline(){
                <td class="text-center">
                    <button type="button" data-toggle="modal" data-target="#bd-outline-update"
                        class="btn btn-primary btn-sm btn-outline-version"
-                       data-id=${data.id}>Clone up version</button>
+                       data-id=${data.id}>Upgrade version</button>
 
                </td>
            </tr>`
@@ -63,6 +63,11 @@ function createOutline(){
             $(".btn-out-modal").click();
             deleteOutline();
             editOutline();
+            Swal.fire(
+                `Create outline successfully`,
+                'You clicked the button!',
+                'success'
+              )
             },
             error: ({ responseJSON })=>{
                 let msg = "";
@@ -239,7 +244,7 @@ function cloneVersion(){
                <td class="text-center">
                    <button type="button" data-toggle="modal" data-target="#bd-outline-update"
                        class="btn btn-primary btn-sm btn-outline-version"
-                       data-id=${data.id}>Clone up version</button>
+                       data-id=${data.id}>Upgrade version</button>
 
                </td>
            </tr>`
@@ -248,6 +253,11 @@ function cloneVersion(){
             deleteOutline();
             editOutline();
             cloneVersion();
+            Swal.fire(
+                `Upgraded outline successfully`,
+                'You clicked the button!',
+                'success'
+              )
             }
         })
     })

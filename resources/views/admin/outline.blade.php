@@ -78,7 +78,7 @@
                                     <td class="text-center">
                                         <button type="button" data-toggle="modal" data-target="#bd-outline-update"
                                             class="btn btn-primary btn-sm btn-outline-version"
-                                            data-id={{ $outline-> id }}>Clone up version</button>
+                                            data-id={{ $outline-> id }}>Upgrade version</button>
 
                                     </td>
                                 </tr>

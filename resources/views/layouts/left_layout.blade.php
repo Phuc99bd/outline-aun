@@ -88,6 +88,22 @@
                                         <i class="metismenu-state-icon caret-left"></i>
                                     </a>
                                 </li>
+                                <li class="app-sidebar__heading">Faculty</li>
+                                <li class="">
+                                    <a href="/faculty" aria-expanded="false">
+                                        <i class="metismenu-icon pe-7s-diamond"></i>
+                                        Faculty
+                                        <i class="metismenu-state-icon caret-left"></i>
+                                    </a>
+                                </li>
+                                <li class="app-sidebar__heading">Danh sach de cuong</li>
+                                <li class="">
+                                    <a href="/list/outline" aria-expanded="false">
+                                        <i class="metismenu-icon pe-7s-diamond"></i>
+                                        Danh sach de cuong
+                                        <i class="metismenu-state-icon caret-left"></i>
+                                    </a>
+                                </li>
                                 <li class="app-sidebar__heading">PRO Version</li>
                                 <li>
                                     <a href="https://dashboardpack.com/theme-details/architectui-dashboard-html-pro/" target="_blank" aria-expanded="false">

@@ -25,6 +25,8 @@ Route::get('/dashboard', 'HomeController@index')->name('home');
 
 Route::get('/subject', 'SubjectController@index');
 Route::get('/outline', 'OutlineController@index');
+Route::get('/faculty', 'FacultyController@index');
+Route::get('/list/outline', 'ListOutlineController@index');
 Route::get('/outline/detail', 'OutlineDetailController@index');
 Route::get('/outline/exportPdf', 'OutlineController@exportWord');
 

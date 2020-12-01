@@ -10,7 +10,7 @@
             <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12 mb-3">
-                            <table class="table tbl-history">
+                            <table class="table ">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -19,7 +19,7 @@
                                         <th>Export</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="tbl-history">
                                     <tr>
                                         <td scope="row"></td>
                                         <td></td>

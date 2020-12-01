@@ -4,6 +4,19 @@
     {{$title}}
 @endsection
 
+@section('faculty')
+<div class="form-group"> 
+
+<h5 for="validationCustom01">Trạng thái</h5>
+                            <select class="form-control-sm form-control input-subject-faculty">
+                            @foreach($faculties as $faculty)
+                                        <option value="{{ $faculty->id }}">{{ $faculty->title}}</option>
+                            @endforeach
+                            </select>
+
+</div>
+@endsection
+
 @section('content')
 <script src="{{ asset('api/subject.js') }}"> </script>
 
@@ -29,6 +42,10 @@
                                                 <th>Tên môn học - VI</th>
                                                 <th>Tên môn học - EN</th>
                                                 <th>Mã môn học</th>
+                                                <th>Khoa</th>
+                                                <th>Phân công</th>
+                                                <th>Danh sách phân công</th>
+                                                <th>Process</th>
                                                 <th class="text-center">Status</th>
                                                 <th class="text-center">Actions</th>
                                             </tr>
@@ -45,6 +62,24 @@
                                                 </td>
                                                 <td>
                                                     {{ $subject->subject_code }}
+                                                </td>
+                                                <td>
+                                                    {{ $subject->faculty->title }}
+                                                </td>
+                                                <td>
+                                                    <button type="button" data-toggle="modal" data-target="#bd-subject-assign" class="btn btn-primary btn-sm btn-subject-assign" data-subject="{{ $subject->id }}" data-id={{ $subject->faculty_id }} >
+                                                    <i class="fas fa-plus"></i> &nbsp; Assign
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                    <button type="button" data-toggle="modal" data-target="#bd-subject-views" class="btn btn-green btn-sm btn-subject-views" data-subject={{ $subject-> id }}>
+                                                    <i class="fas fa-allergies"></i> &nbsp; Views
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-green" data-id={{ $subject-> id }}>
+                                                    <i class="fas fa-abacus"></i> &nbsp; {{ count($subject->listCompleted)}}/{{ count($subject->listAssignment)}} ({{ count($subject->listCompleted) == 0 ? "0" : ( count($subject->listCompleted) /  count($subject->listAssignment)) * 100}}%)
+                                                    </button>
                                                 </td>
                                                 <td class="text-center">
                                                     <div class="badge badge-warning">@if($subject->status == 0)

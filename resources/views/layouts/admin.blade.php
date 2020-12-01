@@ -44,6 +44,8 @@
     @include('admin.outlines.create')
     @include('admin.outlines.edit')
     @include('admin.subjects.edit')
+    @include('admin.subjects.assign')
+    @include('admin.subjects.views')
     @include('admin.elos.create')
     @include('admin.elos.edit')
     @include('admin.settings.edit')

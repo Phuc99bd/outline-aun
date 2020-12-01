@@ -29,13 +29,14 @@
                 </div>
                 <div class="form-group"> 
 
-                <h5 for="validationCustom01">Trạng thái</h5>
+                <h5 for="validationCustom01">Khoa</h5>
                                             <select class="form-control-sm form-control input-subject-status">
                                                         <option value="0">Đình chỉ</option>
                                                         <option value="1">Hoạt động</option>
                                                         <option value="2">Chò duyệt</option>
                                                     </select>
                 </div>
+                @yield('faculty')
                 </div>
                                             
                                             

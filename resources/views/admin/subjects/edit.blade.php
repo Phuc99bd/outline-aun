@@ -32,6 +32,12 @@
                                             <select class="form-control-sm form-control input-subject-edit-status">   
                                             </select>
                 </div>
+                <div class="form-group"> 
+
+                <h5 for="validationCustom01">Khoa</h5>
+                                            <select class="form-control-sm form-control input-subject-edit-faculty">   
+                                            </select>
+                </div>
                 </div>
                                             
                                             

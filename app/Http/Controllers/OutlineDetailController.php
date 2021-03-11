@@ -29,7 +29,7 @@ class OutlineDetailController extends Controller
         $id = $request -> input("id");
         $user = Auth::user();
 
-        $outline = Outline::where("user_id",$user->id)->where("id" , $id)
+        $outline = Outline::where("id" , $id)
         ->first();
         if(!$outline){
             return route('dashboard');

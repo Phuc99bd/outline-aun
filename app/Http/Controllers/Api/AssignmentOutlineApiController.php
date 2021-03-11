@@ -57,4 +57,12 @@ class AssignmentOutlineApiController extends Controller
 
         return response([ "data" => $subject] );
     }
+
+    public function updateStatus(Request $request){
+        $id = $request->input("id");
+        $status = $request->input("status");
+        AssignmentOutline::where("id" , $id)->update(["status" => $status]);
+
+        return response(["data"=> $status , "id" => $id]);
+    }
 }

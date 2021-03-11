@@ -48,6 +48,7 @@ Route::group(["prefix"=>"v1/assign"],function(){
 
 Route::group(["prefix"=>"v1/outline"],function(){
     Route::post('/create', 'Api\OutlineApiController@create');
+    Route::post('/updateStatus', 'Api\AssignmentOutlineApiController@updateStatus');
     Route::put('/update', 'Api\OutlineApiController@update');
     Route::delete('/delete', 'Api\OutlineApiController@delete');
     Route::get('/detail', 'Api\OutlineApiController@detail');
@@ -59,4 +60,8 @@ Route::group(["prefix"=>"v1/outline"],function(){
 Route::group(["prefix"=>"v1/outline-detail"],function(){
     Route::get('/detail', 'Api\OutlineDetailApiController@detail');
     Route::put('/update', 'Api\OutlineDetailApiController@update');
+});
+
+Route::group(["prefix"=>"v1/user-api"],function(){
+    Route::post('/import', 'Api\UserApiController@importUser');
 });

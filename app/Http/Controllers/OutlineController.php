@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Models\Outline;
+use App\Models\AssignmentOutline;
 
 class OutlineController extends Controller
 {
@@ -29,12 +30,16 @@ class OutlineController extends Controller
         $limit = $request -> input("limit") ? $request -> input("limit") : 10;
         $user = Auth::user();
 
-        $outlines = Outline::where("user_id",$user->id)->orderBy("created_at","desc")
+        $outlines = $user->role == 0 ?  Outline::where("user_id",$user->id)->orderBy("created_at","desc")
+        ->with("subject")
+        ->paginate($limit) :  Outline::orderBy("created_at","desc")
         ->with("subject")
         ->paginate($limit);
 
-        // return response($subjects);
-        return view('admin.outline',[ "user" => $user , "outlines" => $outlines , "title" => "Manager outline"]);
+        $outlineNeedWork = AssignmentOutline::where("user_id" , $user->id)->with("subject")->get();
+
+        // return response($outlineNeedWork);
+        return view('admin.outline',[ "user" => $user , "outlines" => $outlines , "title" => "Manager outline" , "outlineNeedWork"=>$outlineNeedWork]);
     }
 
     public function preview(Request $request)
@@ -42,8 +47,7 @@ class OutlineController extends Controller
         $id = $request -> input("id");
         $user = Auth::user();
 
-        $outline = Outline::where("user_id",$user->id)
-        ->where("id",$id)
+        $outline = Outline::where("id",$id)
         ->with("subject")
         ->with("outlineDetails")
         ->first();

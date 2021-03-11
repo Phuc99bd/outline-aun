@@ -30,7 +30,7 @@ class UserController extends Controller
         $limit = $request -> input("limit") ? $request -> input("limit") : 10;
         $user = Auth::user();
 
-        $users = User::where("role","!=",1)->paginate($limit);
+        $users = User::where("role","!=",1)->with("faculty")->paginate($limit);
         return view('admin.users',[ "user" => $user , "title" => "Manager User" , "users" => $users]);
     }
 }

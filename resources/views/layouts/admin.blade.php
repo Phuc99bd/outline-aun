@@ -27,6 +27,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="{{ asset('admin/froala_editor.pkgd.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('admin/loading.js') }}"></script>
 
 <body>
 

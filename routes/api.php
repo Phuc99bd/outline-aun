@@ -49,6 +49,7 @@ Route::group(["prefix"=>"v1/assign"],function(){
 Route::group(["prefix"=>"v1/outline"],function(){
     Route::post('/create', 'Api\OutlineApiController@create');
     Route::post('/updateStatus', 'Api\AssignmentOutlineApiController@updateStatus');
+    Route::put('/updatePublic', 'Api\AssignmentOutlineApiController@updatePublic');
     Route::put('/update', 'Api\OutlineApiController@update');
     Route::delete('/delete', 'Api\OutlineApiController@delete');
     Route::get('/detail', 'Api\OutlineApiController@detail');

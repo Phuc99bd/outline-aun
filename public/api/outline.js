@@ -31,9 +31,9 @@ function createOutline() {
                        ${data.is_practice == 0 ? "Lý thuyết" : "Thực hành"}
                    </td>
                    <td class="text-center">
-                       <button type="button" data-toggle="modal" data-target="#bd-outline-update"
-                           class="btn btn-primary btn-sm btn-outline-detail"
-                           data-id="${data.id}">detail</button>
+                   <a
+                   class="btn btn-primary btn-sm btn-outline-export"
+                  href="/outline/detail?id=${data.id}"> Detail</a>
                     <button
                                                 class="mr-2 btn-icon btn-icon-only btn btn-outline-danger btn-outline-detail" data-toggle="modal"
                                                  data-target="#bd-outline-edit"
@@ -103,8 +103,9 @@ function createOutline() {
         let taskid = +$(this).attr("data-taskid");
         let subject_id = +$(this).attr("data-subjectid");
         let title = $(this).attr("data-title");
-        callApiCreate(subject_id, `${title} - Lý thuyết`, 0, user_id)
-        callApiCreate(subject_id, `${title} - Thực hành`, 1, user_id)
+        const valueOf = new Date().valueOf()
+        callApiCreate(subject_id, `${title} - Lý thuyết - ${valueOf}`, 0, user_id)
+        callApiCreate(subject_id, `${title} - Thực hành - ${valueOf}`, 1, user_id)
         $.ajax({
             url: "/api/v1/outline/updateStatus",
             type: "POST",
@@ -139,6 +140,8 @@ function createOutline() {
         $(this).hide();
         $(`.task-body`).find(`.btn-processing-task[data-taskid=${taskid}]`).show();
     })
+
+   
 }
 
 
@@ -193,6 +196,29 @@ function editOutline() {
                 )
             }
         })
+    })
+    
+}
+
+function onPublic(){
+    $(".btn-outline-public").unbind("click").on("click", function(){
+        const outline_id = $(this).attr('data-id');
+        const status = $(this).attr('data-status');
+        $.ajax({
+            url: `/api/v1/outline/updatePublic`,
+            type: "PUT",
+            data: JSON.stringify({ id: outline_id }),
+            contentType: "application/json"
+        })
+        $(".outline-body").find(`tr[data-id=${outline_id}] td:nth-child(3)`).html(`  <button
+        class="mr-2 btn-icon btn-icon-only btn btn-outline-danger btn-outline-public"  data-status="${!status}"
+        data-id="${outline_id}">${!status ? "Hủy" : "Công khai"}</button>`);
+        onPublic();
+        Swal.fire(
+            msg,
+            'Successfully',
+            'success'
+        )
     })
 }
 
@@ -313,4 +339,5 @@ $(document).ready(function () {
     editOutline();
     exportPdf();
     cloneVersion();
+    onPublic()
 })

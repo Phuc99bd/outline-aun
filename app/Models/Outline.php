@@ -12,6 +12,7 @@ class Outline extends Model
         'subject_id',
         "user_id",
         "is_practice",
+        "release"
     ];
 
     public function subject(){

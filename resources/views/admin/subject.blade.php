@@ -7,7 +7,7 @@
 @section('faculty')
 <div class="form-group"> 
 
-<h5 for="validationCustom01">Trạng thái</h5>
+<h5 for="validationCustom01">Khoa</h5>
                             <select class="form-control-sm form-control input-subject-faculty">
                             @foreach($faculties as $faculty)
                                         <option value="{{ $faculty->id }}">{{ $faculty->title}}</option>

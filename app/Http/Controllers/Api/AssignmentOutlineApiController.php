@@ -9,6 +9,7 @@ use Validator;
 use Illuminate\Support\Facades\Log;
 use Exception;
 use App\Models\User;
+use App\Models\Outline;
 use App\Models\AssignmentOutline;
 use App\Models\Subject;
 
@@ -64,5 +65,18 @@ class AssignmentOutlineApiController extends Controller
         AssignmentOutline::where("id" , $id)->update(["status" => $status]);
 
         return response(["data"=> $status , "id" => $id]);
+    }
+    
+    public function updatePublic(Request $request){
+        try {
+            $id = $request->input("id");
+            $outline = Outline::where("id",$id)->first();
+            //code...
+            Outline::where("id", $id)->update(["release"=> !$outline->release]);
+            return response(["data"=>"success"]);
+        } catch (\Throwable $th) {
+            throw $th;
+            return response($th,500);
+        }
     }
 }

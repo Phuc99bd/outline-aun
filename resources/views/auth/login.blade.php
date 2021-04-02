@@ -15,7 +15,6 @@
                     @csrf
 					<div class="wrap-input100 validate-input" data-validate = "Enter Address email">
 						<input class="input100 @error('email') is-invalid @enderror" type="email" name="email" placeholder="Address email" autofocus>
-						
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
@@ -23,8 +22,7 @@
 						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
 					
 					</div>
-					<span class="focus-input100" data-placeholder="&#xe82a;"></span>
-					<div class="wrap-input100 validate-input" data-validate="Enter password">
+					<div class="wrap-input100 validate-input customError" data-validate="Enter password">
 					@error('email')
                                     <span class="alert alert-danger" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -42,7 +40,7 @@
                         {{ __('Login') }}
 						</button>
 					</div>
-					<div class="form-group row mb-0">
+					<div class="form-group row mb-0 d-flex">
 						<a href="/register" style="text-align: center; color: blue; width:100%; padding:20px; text-size: 16px;"> If you don't have account, please register </a>
 					</div>
 				</form>

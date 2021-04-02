@@ -74,7 +74,7 @@
                         <!-- </div> -->
                     </div>
                     <div class="table-responsive">
-                        <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                        <table class="align-middle mb-0 table table-borderless table-striped table-hover outline-body">
                             <thead>
                                 <tr>
                                     <th class="text-center">#</th>
@@ -101,6 +101,7 @@
                                     <td>
                                         {{ $outline->title }}
                                     </td>
+                                   
                                     <td>
                                         {{ $outline->version }}
                                     </td>

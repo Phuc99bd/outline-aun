@@ -477,5 +477,22 @@ iframe {
   }
 }
 
+.d-flex{
+  display: flex;
+}
 
+.d-flex a{
+  color: black !important;
+  text-decoration: none !important;
+  cursor: pointer;
+}
 
+.customError{
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+}
+.customError span{
+  color: red;
+  margin-bottom: 5px;
+}

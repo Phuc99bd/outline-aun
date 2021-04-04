@@ -14,7 +14,7 @@
                                     <div class="card-header"> Quản lý Khoa
                                         <div class="btn-actions-pane-right">
                                             <div role="group" class="btn-group-sm btn-group">
-                                                <button class="active btn btn-subject-show-create" data-toggle="modal" data-target="#bd-faculty-create"> Create </button>
+                                                <button class="active btn btn-faculty-show-create" data-toggle="modal" data-target="#bd-faculty-create"> Create </button>
                                                 <!-- <button class="btn btn-focus">All Month                                             
                                                 </button> -->
                                             </div>

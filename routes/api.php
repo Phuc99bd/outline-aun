@@ -34,6 +34,13 @@ Route::group(["prefix"=>"v1/elo"],function(){
     Route::put('/update', 'Api\EloApiController@update');
 });
 
+Route::group(["prefix"=>"v1/faculty"],function(){
+    Route::get('/detail', 'Api\FacultyApiController@detail');
+    Route::delete('/delete', 'Api\FacultyApiController@delete');
+    Route::post('/create', 'Api\FacultyApiController@create');
+    Route::put('/update', 'Api\FacultyApiController@update');
+});
+
 Route::group(["prefix"=>"v1/setting"],function(){
     Route::get('/detail', 'Api\SettingApiController@detail');
     Route::put('/update', 'Api\SettingApiController@update');

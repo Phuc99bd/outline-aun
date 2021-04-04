@@ -49,6 +49,8 @@
     @include('admin.subjects.views')
     @include('admin.elos.create')
     @include('admin.elos.edit')
+    @include('admin.faculty.create')
+    @include('admin.faculty.edit')
     @include('admin.settings.edit')
     @include('admin.outline_details.edit')
     @include('admin.users.preview')
